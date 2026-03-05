@@ -1,0 +1,20 @@
+// Creado — Prisma schema at monorepo root
+// Defines the database connection and the Url model
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// The only table we need — stores every shortened URL
+model Url {
+  id          String   @id @default(cuid())
+  originalUrl String
+  shortCode   String   @unique
+  clicks      Int      @default(0)
+  createdAt   DateTime @default(now())
+}
