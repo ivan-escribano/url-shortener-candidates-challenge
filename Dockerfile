@@ -4,13 +4,13 @@ WORKDIR /app
 
 FROM base AS dependencies
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
-COPY libs/domain/package.json ./libs/domain/
+COPY core/package.json ./core/
 COPY applications/web/package.json ./applications/web/
 RUN pnpm install --frozen-lockfile
 
 FROM base AS build
 COPY --from=dependencies /app/node_modules ./node_modules
-COPY --from=dependencies /app/libs/domain/node_modules ./libs/domain/node_modules
+COPY --from=dependencies /app/core/node_modules ./core/node_modules
 COPY --from=dependencies /app/applications/web/node_modules ./applications/web/node_modules
 COPY . .
 RUN pnpm build
@@ -18,11 +18,13 @@ RUN pnpm build
 FROM base AS production
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/applications/web/node_modules ./applications/web/node_modules
-COPY --from=build /app/libs/domain/node_modules ./libs/domain/node_modules
+COPY --from=build /app/core/node_modules ./core/node_modules
 COPY --from=build /app/applications/web/build ./applications/web/build
-COPY libs/domain/src ./libs/domain/src
+# Updated — prisma folder is now inside applications/web
+COPY --from=build /app/applications/web/prisma ./applications/web/prisma
+COPY core ./core
 COPY applications/web/package.json ./applications/web/
-COPY libs/domain/package.json ./libs/domain/
+COPY core/package.json ./core/
 COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
 
 WORKDIR /app/applications/web
