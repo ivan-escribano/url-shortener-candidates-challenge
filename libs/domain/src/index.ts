@@ -1,3 +1,2 @@
-export { baseUrl } from "./base-url";
-
-export { shortenedUrls, generateShortCode } from "./shortened-url";
+// Creado — root barrel export for the domain package
+export * from './url';
