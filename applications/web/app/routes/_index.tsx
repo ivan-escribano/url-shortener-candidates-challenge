@@ -4,7 +4,7 @@ import {
   baseUrl,
   shortenedUrls,
   generateShortCode,
-} from "@url-shortener/engine";
+} from "@url-shortener/domain";
 
 export function loader() {
   return {

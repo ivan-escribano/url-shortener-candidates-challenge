@@ -1,5 +1,5 @@
 {
-  "name": "@url-shortener/engine",
+  "name": "@url-shortener/domain",
   "version": "0.0.1",
   "type": "module",
   "main": "src/index.ts",
