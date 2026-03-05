@@ -143,3 +143,10 @@ vite.config.ts.timestamp-*
 
 # Claude code
 .claude/settings.local.json
+
+# Internal project memory
+.internal-docs
+
+# Local editor and agent configuration
+.vscode/
+CLAUDE.md
