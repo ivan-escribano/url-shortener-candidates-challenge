@@ -10,6 +10,6 @@
     "declarationMap": true,
     "sourceMap": true
   },
-  "include": ["domain", "application", "infrastructure", "index.ts"],
+  "include": ["domain", "application", "infrastructure", "tests", "index.ts"],
   "exclude": ["node_modules", "dist"]
 }
