@@ -3,7 +3,7 @@ import { isRouteErrorResponse, redirect, useRouteError } from 'react-router';
 
 import { RedirectUrl } from '@url-shortener/core';
 
-import { PrismaUrlRepository } from '~/server/prisma/prisma-url.repository';
+import { PrismaUrlRepository } from '~/server/prisma/url.repository';
 
 import type { Route } from './+types/route';
 

@@ -1,7 +1,7 @@
 import { DeleteUrl, ShortenUrl, UpdateUrl } from '@url-shortener/core';
 import { z } from 'zod';
 
-import { PrismaUrlRepository } from '~/server/prisma/prisma-url.repository';
+import { PrismaUrlRepository } from '~/server/prisma/url.repository';
 
 const shortenSchema = z.object({
   url: z.url('Invalid URL').max(2048, 'URL is too long'),

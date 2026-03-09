@@ -2,7 +2,7 @@ import { useActionData, useNavigation } from 'react-router';
 
 import { ListUrls } from '@url-shortener/core';
 
-import { PrismaUrlRepository } from '~/server/prisma/prisma-url.repository';
+import { PrismaUrlRepository } from '~/server/prisma/url.repository';
 import { handleDelete, handleShorten, handleUpdate } from './actions';
 import { ShortenedUrlResult } from '~/components/custom/shortened-url-result/shortened-url-result.component';
 import { UrlForm } from '~/components/custom/url-form/url-form.component';
