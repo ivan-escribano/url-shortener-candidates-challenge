@@ -1,9 +1,8 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+
 import { DeleteUrl } from '../../application/delete-url.use-case';
 import { Url } from '../../domain/url.entity';
 import { createMockRepo } from '../helpers/mock-repo';
-
-// Actualizado: usa createMockRepo compartido
 
 describe('DeleteUrl', () => {
   it('deletes an existing URL', async () => {
@@ -29,9 +28,7 @@ describe('DeleteUrl', () => {
       findById: vi.fn().mockResolvedValue(null),
     });
 
-    await expect(
-      new DeleteUrl(mockRepo).execute('no-exist'),
-    ).rejects.toThrow('URL not found');
+    await expect(new DeleteUrl(mockRepo).execute('no-exist')).rejects.toThrow('URL not found');
     expect(mockRepo.delete).not.toHaveBeenCalled();
   });
 });
