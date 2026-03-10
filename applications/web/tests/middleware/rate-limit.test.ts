@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import { applyRateLimit } from '../../app/server/middleware/rate-limit.middleware';
 
@@ -7,7 +7,17 @@ const createRequest = (ip = '1.2.3.4') =>
     headers: { 'x-forwarded-for': ip },
   });
 
+// Rate limit only runs in production, so we simulate it for testing
+const originalEnv = process.env.NODE_ENV;
+
 describe('applyRateLimit', () => {
+  beforeAll(() => {
+    process.env.NODE_ENV = 'production';
+  });
+
+  afterAll(() => {
+    process.env.NODE_ENV = originalEnv;
+  });
   it('allows the first 20 requests', () => {
     const ip = `10.0.0.${Math.random()}`;
 

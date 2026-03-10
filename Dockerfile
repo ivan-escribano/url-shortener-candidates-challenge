@@ -1,4 +1,4 @@
-FROM node:20-alpine AS base
+FROM node:22-alpine AS base
 RUN corepack enable && corepack prepare pnpm@10.20.0 --activate
 WORKDIR /app
 
@@ -13,6 +13,7 @@ COPY --from=dependencies /app/node_modules ./node_modules
 COPY --from=dependencies /app/core/node_modules ./core/node_modules
 COPY --from=dependencies /app/applications/web/node_modules ./applications/web/node_modules
 COPY . .
+RUN cd applications/web && npx prisma generate
 RUN pnpm build
 
 FROM base AS production
@@ -29,4 +30,4 @@ COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
 
 WORKDIR /app/applications/web
 EXPOSE 3000
-CMD ["pnpm", "start"]
+CMD ["sh", "-c", "npx prisma migrate deploy && pnpm start"]
