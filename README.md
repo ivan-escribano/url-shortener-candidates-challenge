@@ -12,7 +12,7 @@
 
 A production-ready URL shortener built with DDD and clean architecture. Shorten links, track clicks, and manage URLs with a full CRUD interface.
 
-<!-- DEMO -->
+https://github.com/user-attachments/assets/6d232b71-e6dc-4b4a-ba15-71bb75121388
 
 ## Tech Stack
 
@@ -55,30 +55,23 @@ url-shortener/
 ### Request Flows
 
 **Create** - User submits a URL → entity validates and generates a unique short code → saved to DB.
-
-<!-- TODO: add create-flow diagram -->
+<img width="2603" height="2220" alt="create-url" src="https://github.com/user-attachments/assets/373646e8-830d-4e9d-8315-013cb96b8472" />
 
 **Read** - Page loads with paginated URL list. Short link visits trigger a 302 redirect and increment the click counter.
-
-<!-- TODO: add read-flow diagram -->
+<img width="2795" height="2573" alt="read-url" src="https://github.com/user-attachments/assets/bde6f8f7-18f8-440c-9557-9d27bf8b78a1" />
 
 **Update** - User edits a URL inline → entity re-validates the new URL (same rules: format, protocol, SSRF) → saved to DB.
-
-<!-- TODO: add update-flow diagram -->
+<img width="3041" height="2562" alt="update-url" src="https://github.com/user-attachments/assets/d7bb50d9-9634-40b3-a27e-65c8288dca7c" />
 
 **Delete** - User clicks delete → confirmation dialog → server verifies the URL exists before removing it.
-
-<!-- TODO: add delete-flow diagram -->
+<img width="3010" height="2497" alt="delete-url" src="https://github.com/user-attachments/assets/32ba4efe-7e36-44cd-bf33-05fd685e3740" />
 
 ## Design
 
 ### Figma
+<img width="957" height="485" alt="Screenshot_59" src="https://github.com/user-attachments/assets/cb946656-ed98-4b4f-a3e3-21c9a8550169" />
 
-<!-- TODO: add Figma screenshot or link -->
-
-### Final Result
-
-<!-- TODO: add app screenshot -->
+[Figma Design](https://www.figma.com/design/03DLekv30tW4VF3lALjbPf/Url-shortener?node-id=0-1&t=p50rkggeZFkdTgzV-1)
 
 ## Getting Started
 
@@ -135,7 +128,9 @@ Open `http://localhost:5173`
 | **E2E**         | 5     | `pnpm --filter web test:e2e` |
 | **All**         | 46    | `pnpm test`                  |
 
-<!-- TODO: add screenshot of tests passing -->
+<img width="605" height="182" alt="Screenshot_58" src="https://github.com/user-attachments/assets/3638da6c-051f-4d21-99c2-8361edfe99d7" />
+<img width="594" height="224" alt="Screenshot_57" src="https://github.com/user-attachments/assets/b651de05-eed3-4f84-99e3-d16b0040b377" />
+<img width="605" height="236" alt="Screenshot_56" src="https://github.com/user-attachments/assets/ae350cf9-3a2d-4f43-8084-48a029fb7a70" />
 
 ## Project Structure
 
