@@ -58,7 +58,10 @@ export class Url {
 
     if (isPrivate) throw new Error(URL_ERRORS.PRIVATE_URL);
 
-    if (!parsed.hostname.includes('.')) throw new Error(URL_ERRORS.INVALID_DOMAIN);
+    const parts = parsed.hostname.split('.');
+    const tld = parts[parts.length - 1];
+
+    if (parts.length < 2 || tld.length < 2) throw new Error(URL_ERRORS.INVALID_DOMAIN);
   }
 
   private static safeParseUrl(url: string): URL | null {

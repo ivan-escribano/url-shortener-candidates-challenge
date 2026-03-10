@@ -47,8 +47,12 @@ describe('Url.create()', () => {
       expect(() => Url.create('ftp://example.com')).toThrow(URL_ERRORS.INVALID_PROTOCOL);
     });
 
-    it('rejects URL without a valid domain (no TLD)', () => {
-      expect(() => Url.create('https://example')).toThrow(URL_ERRORS.INVALID_DOMAIN);
+    it.each([
+      ['https://example', 'no TLD'],
+      ['https://example.', 'trailing dot, no TLD'],
+      ['https://example.a', 'TLD too short (1 char)'],
+    ])('rejects URL with invalid domain: %s (%s)', (url) => {
+      expect(() => Url.create(url)).toThrow(URL_ERRORS.INVALID_DOMAIN);
     });
 
     it.each([
