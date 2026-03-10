@@ -47,6 +47,10 @@ describe('Url.create()', () => {
       expect(() => Url.create('ftp://example.com')).toThrow(URL_ERRORS.INVALID_PROTOCOL);
     });
 
+    it('rejects URL without a valid domain (no TLD)', () => {
+      expect(() => Url.create('https://example')).toThrow(URL_ERRORS.INVALID_DOMAIN);
+    });
+
     it.each([
       ['http://localhost', 'localhost'],
       ['http://192.168.1.1', '192.168.x.x'],

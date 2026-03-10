@@ -12,4 +12,5 @@ export const URL_ERRORS = {
   INVALID_FORMAT: 'Invalid URL format',
   INVALID_PROTOCOL: 'Only http and https URLs are allowed',
   PRIVATE_URL: 'Private and local URLs are not allowed',
+  INVALID_DOMAIN: 'URL must have a valid domain (e.g. example.com)',
 };

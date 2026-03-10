@@ -57,6 +57,8 @@ export class Url {
     const isPrivate = URL_CONFIG.PRIVATE_IP_PATTERNS.some((p) => p.test(parsed.hostname));
 
     if (isPrivate) throw new Error(URL_ERRORS.PRIVATE_URL);
+
+    if (!parsed.hostname.includes('.')) throw new Error(URL_ERRORS.INVALID_DOMAIN);
   }
 
   private static safeParseUrl(url: string): URL | null {
